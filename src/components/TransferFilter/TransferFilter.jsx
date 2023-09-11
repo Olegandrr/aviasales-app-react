@@ -1,52 +1,43 @@
-import { useState } from 'react'
-import { Checkbox, ConfigProvider } from 'antd'
+/* eslint-disable no-shadow */
+// import { useSelector } from 'react-redux'
 
-import classesFilters from './TransferFilter.module.scss'
+import store from '../../store'
 
-const CheckboxGroup = Checkbox.Group
+import classes from './TransferFilter.module.scss'
 
 function TransferFilter() {
-  const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']
-  const defaultCheckedList = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']
-  const [checkedList, setCheckedList] = useState(defaultCheckedList)
-  const checkAll = plainOptions.length === checkedList.length
-  const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length
-  const onChange = (list) => {
-    setCheckedList(list)
-  }
-  const onCheckAllChange = (e) => {
-    setCheckedList(e.target.checked ? plainOptions : [])
-  }
+  // const state = useSelector((state) => state)
+  console.log(store.getState())
+
   return (
-    <div className={classesFilters['transfer-filter-wrapper']}>
+    <div className={classes['transfer-filter-wrapper']}>
       <h4>Количество пересадок</h4>
-      <ConfigProvider
-        theme={{
-          token: {
-            fontFamily: 'Roboto',
-            fontSize: 13,
-            fontWeight: 400,
-            colorBorder: '#9ABBCE',
-            colorPrimary: '#2196F3',
-            colorWhite: '#FFF',
-          },
-        }}
-      >
-        <Checkbox
-          className={classesFilters['transfer-filter-checkbox-all']}
-          indeterminate={indeterminate}
-          onChange={onCheckAllChange}
-          checked={checkAll}
-        >
-          Все
-        </Checkbox>
-        <CheckboxGroup
-          className={classesFilters['transfer-filter-checkbox']}
-          options={plainOptions}
-          value={checkedList}
-          onChange={onChange}
-        />
-      </ConfigProvider>
+      <label htmlFor="All" className={classes.checkbox}>
+        <input id="All" type="checkbox" />
+        <span className={classes['checkbox--craft']} />
+        <span>Все</span>
+      </label>
+
+      <label htmlFor="No" className={classes.checkbox}>
+        <input type="checkbox" id="No" />
+        <span className={classes['checkbox--craft']} />
+        Без пересадок
+      </label>
+
+      <label htmlFor="One" className={classes.checkbox}>
+        <input type="checkbox" id="One" />
+        <span className={classes['checkbox--craft']} /> 1 пересадка
+      </label>
+
+      <label htmlFor="Two" className={classes.checkbox}>
+        <input type="checkbox" id="Two" />
+        <span className={classes['checkbox--craft']} />2 пересадки
+      </label>
+
+      <label htmlFor="Three" className={classes.checkbox}>
+        <input type="checkbox" id="Three" />
+        <span className={classes['checkbox--craft']} />3 пересадки
+      </label>
     </div>
   )
 }
