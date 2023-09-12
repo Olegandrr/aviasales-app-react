@@ -1,10 +1,8 @@
 /* eslint-disable default-param-last */
 const initialState = {
-  tabs: {
-    cheap: true,
-    fast: false,
-    optimal: false,
-  },
+  cheap: true,
+  fast: false,
+  optimal: false,
 }
 
 const TicketsTabReducer = (state = initialState, action) => {
@@ -12,32 +10,23 @@ const TicketsTabReducer = (state = initialState, action) => {
     case 'CHEAP_TAB':
       return {
         ...state,
-        tabs: {
-          ...state.tabs,
-          cheap: true,
-          fast: false,
-          optimal: false,
-        },
+        cheap: true,
+        fast: false,
+        optimal: false,
       }
     case 'FAST_TAB':
       return {
         ...state,
-        tabs: {
-          ...state.tabs,
-          cheap: false,
-          fast: true,
-          optimal: false,
-        },
+        cheap: false,
+        fast: true,
+        optimal: false,
       }
     case 'OPTIMAL_TAB':
       return {
         ...state,
-        tabs: {
-          ...state.tabs,
-          cheap: false,
-          fast: false,
-          optimal: true,
-        },
+        cheap: false,
+        fast: false,
+        optimal: true,
       }
     default:
       return state

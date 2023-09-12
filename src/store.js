@@ -1,7 +1,13 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
-import TransferFilterReducer from './Reducer/TransferFilterReducer'
+import TransferFilter from './Reducer/TransferFilterReducer'
+import TicketsTab from './Reducer/TicketsTabReducer'
 
-const store = createStore(TransferFilterReducer)
+const AppReducer = combineReducers({
+  TransferFilter,
+  TicketsTab,
+})
+
+const store = createStore(AppReducer)
 
 export default store

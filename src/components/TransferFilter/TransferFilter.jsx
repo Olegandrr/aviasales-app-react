@@ -8,27 +8,25 @@ import classes from './TransferFilter.module.scss'
 
 function TransferFilter() {
   const dispatch = useDispatch()
-  const stateTransfers = useSelector((state) => state.transfers)
+  const stateTransfers = useSelector((state) => state.TransferFilter)
   const { all, noTransfers, oneTransfer, twoTransfer, threeTransfer } = stateTransfers
 
-  const filters = (id) => {
-    const activeFilters = Object.values(stateTransfers)
+  const filters = () =>
+    Object.values(stateTransfers)
       .slice(1)
       .filter((value) => value === true).length
-    if (all) {
-      dispatch(filtersActions(id))
-    } else if (activeFilters === 3 && !stateTransfers[id]) {
-      dispatch(filtersActions('All'))
-    } else {
-      dispatch(filtersActions(id))
-    }
-  }
 
   const handleClickFilter = (e) => {
     const { id } = e.target
     if (id === 'All') {
       dispatch(filtersActions('All'))
-    } else filters(id)
+    } else if (all) {
+      dispatch(filtersActions(id))
+    } else if (filters() === 3 && !stateTransfers[id]) {
+      dispatch(filtersActions('All'))
+    } else {
+      dispatch(filtersActions(id))
+    }
   }
 
   return (

@@ -1,67 +1,50 @@
 /* eslint-disable default-param-last */
 const initialState = {
-  transfers: {
-    all: true,
-    noTransfers: true,
-    oneTransfer: true,
-    twoTransfer: true,
-    threeTransfer: true,
-  },
+  all: true,
+  noTransfers: true,
+  oneTransfer: true,
+  twoTransfer: true,
+  threeTransfer: true,
 }
 
-const TransferFilterReducer = (state = initialState, action) => {
+const TransferFilter = (state = initialState, action) => {
   switch (action.type) {
     case 'ALL_FILTERS':
       return {
         ...state,
-        transfers: {
-          ...state.transfers,
-          all: !state.transfers.all,
-          noTransfers: !state.transfers.all,
-          oneTransfer: !state.transfers.all,
-          twoTransfer: !state.transfers.all,
-          threeTransfer: !state.transfers.all,
-        },
+        all: !state.all,
+        noTransfers: !state.all,
+        oneTransfer: !state.all,
+        twoTransfer: !state.all,
+        threeTransfer: !state.all,
       }
     case 'NO_TRANSFER_FILTERS':
       return {
         ...state,
-        transfers: {
-          ...state.transfers,
-          all: false,
-          noTransfers: !state.transfers.noTransfers,
-        },
+        all: false,
+        noTransfers: !state.noTransfers,
       }
     case 'ONE_TRANSFER_FILTERS':
       return {
         ...state,
-        transfers: {
-          ...state.transfers,
-          all: false,
-          oneTransfer: !state.transfers.oneTransfer,
-        },
+        all: false,
+        oneTransfer: !state.oneTransfer,
       }
     case 'TWO_TRANSFER_FILTERS':
       return {
         ...state,
-        transfers: {
-          ...state.transfers,
-          all: false,
-          twoTransfer: !state.transfers.twoTransfer,
-        },
+        all: false,
+        twoTransfer: !state.twoTransfer,
       }
     case 'THREE_TRANSFER_FILTERS':
       return {
         ...state,
-        transfers: {
-          ...state.transfers,
-          all: false,
-          threeTransfer: !state.transfers.threeTransfer,
-        },
+        all: false,
+        threeTransfer: !state.threeTransfer,
       }
     default:
       return state
   }
 }
 
-export default TransferFilterReducer
+export default TransferFilter
