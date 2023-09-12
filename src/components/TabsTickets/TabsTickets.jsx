@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 import tabsClasses from './TabsTickets.module.scss'
 
 function TabsTickets() {
@@ -9,7 +11,7 @@ function TabsTickets() {
   return (
     <div className={tabsClasses['tabs-wrapper']}>
       {button.map((item) => (
-        <button className={tabsClasses['tabs-button']} name={item.name} type="button">
+        <button className={tabsClasses['tabs-button']} name={item.name} type="button" key={uuidv4()}>
           {item.text}
         </button>
       ))}
