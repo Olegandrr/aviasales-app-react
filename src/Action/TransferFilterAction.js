@@ -12,7 +12,12 @@ function filtersActions(id) {
     return { type: 'THREE_TRANSFER_FILTERS' }
   }
 
-  return { type: 'ALL_FILTERS' }
+  return {
+    type: 'ALL_FILTERS',
+    meta: {
+      delayMS: 100,
+    },
+  }
 }
 
 export default filtersActions
