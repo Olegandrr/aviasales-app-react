@@ -1,7 +1,6 @@
 /* eslint-disable no-shadow */
 import { useSelector, useDispatch } from 'react-redux'
 
-// import store from '../../store'
 import filtersActions from '../../Action/TransferFilterAction'
 
 import classes from './TransferFilter.module.scss'
@@ -11,7 +10,7 @@ function TransferFilter() {
   const stateTransfers = useSelector((state) => state.TransferFilter)
   const { all, noTransfers, oneTransfer, twoTransfer, threeTransfer } = stateTransfers
 
-  const filters = () =>
+  const checkboxTrue = () =>
     Object.values(stateTransfers)
       .slice(1)
       .filter((value) => value === true).length
@@ -22,7 +21,7 @@ function TransferFilter() {
       dispatch(filtersActions('All'))
     } else if (all) {
       dispatch(filtersActions(id))
-    } else if (filters() === 3 && !stateTransfers[id]) {
+    } else if (checkboxTrue() === 3 && !stateTransfers[id]) {
       dispatch(filtersActions('All'))
     } else {
       dispatch(filtersActions(id))

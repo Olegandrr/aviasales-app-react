@@ -1,14 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import reduxThank from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk'
 
 import TransferFilter from './Reducer/TransferFilterReducer'
 import TicketsTab from './Reducer/TicketsTabReducer'
-import logger from './MiddleWare/logger'
-import timeOut from './MiddleWare/timeOut'
+import GetTickets from './Reducer/GetTicketsReducer'
 
 const AppReducer = combineReducers({
   TransferFilter,
   TicketsTab,
+  GetTickets,
 })
 
 const composeEnhancers =
@@ -16,6 +16,6 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose
 
-const store = createStore(AppReducer, composeEnhancers(applyMiddleware(logger, timeOut, reduxThank)))
+const store = createStore(AppReducer, composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 export default store
