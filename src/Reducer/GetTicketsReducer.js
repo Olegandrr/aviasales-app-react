@@ -4,6 +4,7 @@ const initialState = {
   searchId: null,
   tickets: [],
   error: false,
+  ticketСounter: 5,
 }
 
 const GetTickets = (state = initialState, action) => {

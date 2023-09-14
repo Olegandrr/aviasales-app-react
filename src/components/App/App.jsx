@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import Header from '../Header'
 import TabsTickets from '../TabsTickets'
 import TransferFilter from '../TransferFilter'
-import Ticket from '../Ticket'
+import TicketsList from '../TicketsList'
 import getTicketsAction from '../../Action/GetTicketsAction'
 
 import classes from './App.module.scss'
@@ -21,7 +21,7 @@ function App() {
       <TransferFilter />
       <div className={classes['section-tickets']}>
         <TabsTickets />
-        <Ticket />
+        <TicketsList />
       </div>
     </div>
   )
