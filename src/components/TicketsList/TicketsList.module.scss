@@ -8,18 +8,24 @@
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 5px;
+  color: #4A4A4A;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px; /* 150% */
   display: grid;
   grid-template-areas: 
-   "a . a2"
-   "a . a2"
-   "c c1 c2"
-   "d d1 d2"
-   "e e1 e2"
-   "f f1 f2"
+   "price . logo"
+   "price . logo"
+   "cities0 text0 stops0"
+   "time0 duration0 transfers0"
+   "cities1 text1 stops1"
+   "time1 duration1 transfers1"
    ". . .";
 }
 
-.c1, .e1, .c2, .e2, .e, .c {
+.font-grey{
   color: #A0B0B9;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
@@ -30,100 +36,92 @@
   text-transform: uppercase;
 }
 
-.f2, .d2, .d, .f, .d1, .f1 {
-  color: #4A4A4A;
-font-family: 'Roboto', sans-serif;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: 21px; /* 150% */
-}
-
-.e {
-  grid-area: e;
+.cities1 {
+  grid-area: cities1;
+  align-self: flex-end;
   
 }
 
-.c {
-  grid-area: c;
+.cities0 {
+  grid-area: cities0;
+  align-self: flex-end;
 }
 
-.c1 {
-  grid-area: c1;
+.text0 {
+  grid-area: text0;
+  align-self: flex-end;
 }
 
-.d{
-  grid-area: d;
+.time0{
+  grid-area: time0;
+  align-items: flex-start;
   
 }
 
-.d1{
-  grid-area: d1;
+.duration0{
+  grid-area: duration0;
   
 }
 
-.f{
-  grid-area: f;
+.time1{
+  grid-area: time1;
   
 }
 
-.f1{
-  grid-area: f1;
+.duration1{
+  grid-area: duration1;
   
 }
 
-.e1 {
-  grid-area: e1;
+.text1 {
+  grid-area: text1;
+  align-self: flex-end;
 }
 
-.c2 {
-  grid-area: c2;
+.stops0 {
+  grid-area: stops0;
+  align-self: flex-end;
 }
 
-.e2 {
-  grid-area: e2;
+.stops1 {
+  grid-area: stops1;
+  align-self: flex-end;
 }
 
-.d2 {
-  grid-area: d2;
+.transfers0 {
+  grid-area: transfers0;
 }
 
-.f2 {
-  grid-area: f2;
+.transfers1 {
+  grid-area: transfers1;
 }
 
-.a {
-  grid-area: a;
-  
+.price {
+  grid-area: price;
   align-self: center;
   color: #2196F3;
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px; /* 100% */
+  line-height: 24px;
 }
 
-.a2 {
+.logo {
  justify-self: right;
   align-self: center;
-  grid-area: a2;
+  grid-area: logo;
 }
 
 @media (max-width: 900px) {
   .ticket-wrapper {
     height: auto;
     width: 100%;
-   
-   
   }
 
-  .a {
-    grid-area: a;
-    
-    
+  .price {
+    grid-area: price;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    
   }
 }

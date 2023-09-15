@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { format, add } from 'date-fns'
 import { v4 as uuidv4 } from 'uuid'
+import { Fragment } from 'react'
 
 import declOfNum from '../../service/declOfNum'
 
@@ -9,7 +10,7 @@ import classes from './TicketsList.module.scss'
 function TicketsList() {
   const { tickets, ticketСounter } = useSelector((state) => state.GetTickets)
   const ticketsRenderList = tickets.slice(0, ticketСounter)
-  const itemTransfers = (length) =>
+  const numberOfTransfers = (length) =>
     `${length > 0 ? length : 'Без'} ${declOfNum(length, ['пересадка', 'пересадки', 'пересадок'])}`
 
   const dateFormate = (date, duration) => {
@@ -19,33 +20,37 @@ function TicketsList() {
     return `${startTime} – ${endTime}`
   }
 
-  const formatDuration = (duration) => {
+  const durationFormat = (duration) => {
     const hours = Math.floor(duration / 60)
     const minutes = duration % 60
     return `${hours}ч ${minutes}м`
   }
-  return ticketsRenderList.map((item) => (
-    <div className={classes['ticket-wrapper']} key={uuidv4()}>
-      <div className={classes.a}>{item.price.toLocaleString('ru-RU')} P</div>
-      <div className={classes.c1}>в пути</div>
-      <div className={classes.e1}>в пути</div>
-      <img className={classes.a2} src={`https://pics.avs.io/99/36/${item.carrier}.png`} alt="Logo" />
-      <div className={classes.c2}>{itemTransfers(item.segments[0].stops.length)}</div>
-      <div className={classes.d}>{dateFormate(item.segments[0].date, item.segments[0].duration)}</div>
-      <div className={classes.f}>{dateFormate(item.segments[1].date, item.segments[1].duration)}</div>
-      <div className={classes.d1}>{formatDuration(item.segments[0].duration)}</div>
-      <div className={classes.f1}>{formatDuration(item.segments[1].duration)}</div>
-      <div className={classes.c}>
-        {item.segments[0].origin} - {item.segments[0].destination}
-      </div>
-      <div className={classes.e}>
-        {item.segments[1].origin} - {item.segments[1].destination}
-      </div>
-      <div className={classes.d2}>{item.segments[0].stops.join(', ')}</div>
-      <div className={classes.e2}>{itemTransfers(item.segments[1].stops.length)}</div>
-      <div className={classes.f2}>{item.segments[1].stops.join(', ')}</div>
+
+  const segment = (item) =>
+    item.segments.map((itm, index) => (
+      <Fragment key={uuidv4()}>
+        <div className={[classes[`stops${index}`], classes['font-grey']].join(' ')}>
+          {numberOfTransfers(itm.stops.length)}
+        </div>
+        <div className={classes[`time${index}`]}>{dateFormate(itm.date, itm.duration)}</div>
+        <div className={classes[`duration${index}`]}>{durationFormat(itm.duration)}</div>
+        <div className={classes[`transfers${index}`]}>{itm.stops.join(', ')}</div>
+        <div className={[classes[`cities${index}`], classes['font-grey']].join(' ')}>
+          {itm.origin} - {itm.destination}
+        </div>
+      </Fragment>
+    ))
+  const ticket = ticketsRenderList.map((item) => (
+    <div key={uuidv4()} className={classes['ticket-wrapper']}>
+      <div className={classes.price}>{item.price.toLocaleString('ru-RU')} P</div>
+      <div className={[classes.text0, classes['font-grey']].join(' ')}>в пути</div>
+      <div className={[classes.text1, classes['font-grey']].join(' ')}>в пути</div>
+      <img className={classes.logo} src={`https://pics.avs.io/99/36/${item.carrier}.png`} alt="Logo" />
+      {segment(item)}
     </div>
   ))
+
+  return <div>{ticket}</div>
 }
 
 export default TicketsList

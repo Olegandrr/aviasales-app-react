@@ -73,9 +73,9 @@ input[type="checkbox"] {
     height: auto;
     width: auto;
     row-gap: 5px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+   
+    align-items: flex-start;
+    justify-content: flex-start;
     padding: 5px;
    
   }
