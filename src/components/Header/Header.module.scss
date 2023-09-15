@@ -10,23 +10,12 @@
   
 }
 
-.header:hover {
-  // animation: header-shadow infinite 1.4s linear;
-}
-
-  .header-logo:hover {
-    animation: header-logo-spin infinite 0.7s linear;
-
-  }
-
-  @keyframes header-plane-translate {
-    from {
-      transform: translate(0, 0);
-      
-    }
-    to {
-      transform: translate(75%, -75%);
-    }
+  .header-logo__spinner {
+    margin: 3% auto;
+  width: 60px;
+  height: 60px;
+    animation: header-logo-spin infinite 0.7s linear, header-shadow infinite 1.4s linear;
+    border-radius: 50%;
   }
 
 @keyframes header-logo-spin {

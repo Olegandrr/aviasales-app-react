@@ -14,9 +14,6 @@ function filtersActions(id) {
 
   return {
     type: 'ALL_FILTERS',
-    meta: {
-      delayMS: 100,
-    },
   }
 }
 

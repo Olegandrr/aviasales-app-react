@@ -26,6 +26,11 @@ const GetTickets = (state = initialState, action) => {
         error: true,
         loader: false,
       }
+    case 'SHOW_MORE_TICKETS':
+      return {
+        ...state,
+        ticketСounter: state.ticketСounter + 5,
+      }
     default:
       return state
   }
