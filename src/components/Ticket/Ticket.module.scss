@@ -7,6 +7,7 @@
   margin-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  border-radius: 5px;
   display: grid;
   grid-template-areas: 
    "a . a2"
@@ -107,4 +108,22 @@ line-height: 21px; /* 150% */
  justify-self: right;
   align-self: center;
   grid-area: a2;
+}
+
+@media (max-width: 900px) {
+  .ticket-wrapper {
+    height: auto;
+    width: 100%;
+   
+   
+  }
+
+  .a {
+    grid-area: a;
+    
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    
+  }
 }

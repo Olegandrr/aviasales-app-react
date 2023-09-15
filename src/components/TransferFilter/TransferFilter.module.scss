@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 232px;
+  width: 24%;
   height: 252px;
   flex-shrink: 0;
   border-radius: 5px;
@@ -64,4 +64,25 @@ input[type="checkbox"] {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+@media (max-width: 900px) {
+  .transfer-filter-wrapper {
+    position:static;
+    margin: auto;
+    height: auto;
+    width: auto;
+    row-gap: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px;
+   
+  }
+
+  h4 {
+   
+    font-size: 10px;
+    
+  }
 }

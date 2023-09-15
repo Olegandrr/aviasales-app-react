@@ -3,7 +3,8 @@ import { format, add } from 'date-fns'
 import { v4 as uuidv4 } from 'uuid'
 
 import declOfNum from '../../service/declOfNum'
-import classes from '../Ticket/Ticket.module.scss'
+
+import classes from './TicketsList.module.scss'
 
 function TicketsList() {
   const { tickets, ticketСounter } = useSelector((state) => state.GetTickets)

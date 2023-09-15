@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: center;
+  width: auto;
 }
 
 .header-logo {
@@ -12,8 +13,8 @@
 
   .header-logo__spinner {
     margin: 3% auto;
-  width: 60px;
-  height: 60px;
+    width: 60px;
+    height: 60px;
     animation: header-logo-spin infinite 0.7s linear, header-shadow infinite 1.4s linear;
     border-radius: 50%;
   }
