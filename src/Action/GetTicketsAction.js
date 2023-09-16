@@ -2,7 +2,7 @@ import store from '../store'
 
 function ticketRequest() {
   const {
-    GetTickets: { searchId },
+    getTickets: { searchId },
   } = store.getState()
   return async (dispatch) => {
     try {

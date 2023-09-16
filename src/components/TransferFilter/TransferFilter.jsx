@@ -7,7 +7,7 @@ import classes from './TransferFilter.module.scss'
 
 function TransferFilter() {
   const dispatch = useDispatch()
-  const stateTransfers = useSelector((state) => state.TransferFilter)
+  const stateTransfers = useSelector((state) => state.transferFilter)
   const { all, noTransfers, oneTransfer, twoTransfer, threeTransfer } = stateTransfers
 
   const checkboxTrue = () =>

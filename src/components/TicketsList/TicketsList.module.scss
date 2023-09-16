@@ -6,7 +6,7 @@
   background-color: #FFF;
   margin-top: 20px;
   padding-left: 20px;
-  padding-right: 20px;
+  
   border-radius: 5px;
   color: #4A4A4A;
   font-family: 'Roboto', sans-serif;
@@ -108,9 +108,16 @@
 }
 
 .logo {
- justify-self: right;
+ justify-self: center;
   align-self: center;
   grid-area: logo;
+}
+
+.not-found {
+  color:#A0B0B9;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  padding-top: 10%;
 }
 
 @media (max-width: 900px) {

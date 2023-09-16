@@ -5,7 +5,7 @@ const initialState = {
   optimal: false,
 }
 
-const TicketsTabReducer = (state = initialState, action) => {
+const ticketsTabReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CHEAP_TAB':
       return {
@@ -33,4 +33,4 @@ const TicketsTabReducer = (state = initialState, action) => {
   }
 }
 
-export default TicketsTabReducer
+export default ticketsTabReducer

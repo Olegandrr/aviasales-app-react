@@ -4,7 +4,7 @@ import headerClasses from './Header.module.scss'
 import logo from './image/Logo.svg'
 
 function Header() {
-  const { loader } = useSelector((state) => state.GetTickets)
+  const { loader } = useSelector((state) => state.getTickets)
   return (
     <header className={headerClasses.header}>
       <img

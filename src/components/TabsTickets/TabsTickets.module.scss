@@ -20,14 +20,21 @@
   text-transform: uppercase;
   background: #FFF;
   border: 1px solid #DFE5EC;
-  border-radius: 3px;
   transition: all 0.5s;
 }
 
+.tabs-button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.tabs-button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+
 .tabs-button:hover {
   box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
-  color: #F3F7FA;
-  background: #2196F3;
+  cursor: pointer;
 }
 
 .tabs-button-active {

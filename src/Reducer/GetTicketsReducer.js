@@ -5,9 +5,10 @@ const initialState = {
   tickets: [],
   error: false,
   ticketСounter: 5,
+  activeTab: '',
 }
 
-const GetTickets = (state = initialState, action) => {
+const getTickets = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_SEARCH_ID':
       return {
@@ -31,9 +32,35 @@ const GetTickets = (state = initialState, action) => {
         ...state,
         ticketСounter: state.ticketСounter + 5,
       }
+    case 'CHEAP_TAB':
+      return {
+        ...state,
+        activeTab: action.name,
+        tickets: state.tickets.sort((a, b) => a.price - b.price),
+      }
+    case 'FAST_TAB':
+      return {
+        ...state,
+        activeTab: action.name,
+        tickets: state.tickets.sort(
+          (a, b) => a.segments[0].duration + a.segments[1].duration - (b.segments[0].duration + b.segments[1].duration)
+        ),
+      }
+    case 'OPTIMAL_TAB':
+      return {
+        ...state,
+        activeTab: action.name,
+        tickets: state.tickets.sort(
+          (a, b) =>
+            a.segments[0].duration +
+            a.segments[1].duration +
+            a.price -
+            (b.segments[0].duration + b.segments[1].duration + b.price)
+        ),
+      }
     default:
       return state
   }
 }
 
-export default GetTickets
+export default getTickets

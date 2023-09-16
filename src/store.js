@@ -1,15 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-import TransferFilter from './Reducer/TransferFilterReducer'
-import TicketsTab from './Reducer/TicketsTabReducer'
-import GetTickets from './Reducer/GetTicketsReducer'
+import transferFilter from './Reducer/TransferFilterReducer'
+import getTickets from './Reducer/GetTicketsReducer'
 import timeOut from './MiddleWare/timeOut'
 
 const AppReducer = combineReducers({
-  TransferFilter,
-  TicketsTab,
-  GetTickets,
+  transferFilter,
+  getTickets,
 })
 
 const composeEnhancers =

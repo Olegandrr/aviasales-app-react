@@ -7,7 +7,7 @@ const initialState = {
   threeTransfer: true,
 }
 
-const TransferFilter = (state = initialState, action) => {
+const transferFilter = (state = initialState, action) => {
   switch (action.type) {
     case 'ALL_FILTERS':
       return {
@@ -47,4 +47,4 @@ const TransferFilter = (state = initialState, action) => {
   }
 }
 
-export default TransferFilter
+export default transferFilter
