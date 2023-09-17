@@ -1,5 +1,5 @@
-/* eslint-disable no-shadow */
 import { useSelector, useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 
 import filtersActions from '../../Action/TransferFilterAction'
 
@@ -8,7 +8,7 @@ import classes from './TransferFilter.module.scss'
 function TransferFilter() {
   const dispatch = useDispatch()
   const stateTransfers = useSelector((state) => state.transferFilter)
-  const { all, noTransfers, oneTransfer, twoTransfer, threeTransfer } = stateTransfers
+  const { all } = stateTransfers
 
   const checkboxTrue = () =>
     Object.values(stateTransfers)
@@ -28,35 +28,24 @@ function TransferFilter() {
     }
   }
 
+  const transfersCheckbox = [
+    { id: 'all', label: 'Все' },
+    { id: 'noTransfers', label: 'Без пересадок' },
+    { id: 'oneTransfer', label: '1 пересадка' },
+    { id: 'twoTransfer', label: '2 пересадки' },
+    { id: 'threeTransfer', label: '3 пересадки' },
+  ]
+
   return (
     <div className={classes['transfer-filter-wrapper']}>
       <h4>Количество пересадок</h4>
-      <label htmlFor="All" className={classes.checkbox}>
-        <input id="All" type="checkbox" onClick={handleClickFilter} />
-        <span className={all ? classes['checkbox--active'] : classes['checkbox--craft']} />
-        Все
-      </label>
-
-      <label htmlFor="noTransfers" className={classes.checkbox}>
-        <input type="checkbox" id="noTransfers" onClick={handleClickFilter} />
-        <span className={noTransfers ? classes['checkbox--active'] : classes['checkbox--craft']} />
-        Без пересадок
-      </label>
-
-      <label htmlFor="oneTransfer" className={classes.checkbox}>
-        <input type="checkbox" id="oneTransfer" onClick={handleClickFilter} />
-        <span className={oneTransfer ? classes['checkbox--active'] : classes['checkbox--craft']} /> 1 пересадка
-      </label>
-
-      <label htmlFor="twoTransfer" className={classes.checkbox}>
-        <input type="checkbox" id="twoTransfer" onClick={handleClickFilter} />
-        <span className={twoTransfer ? classes['checkbox--active'] : classes['checkbox--craft']} />2 пересадки
-      </label>
-
-      <label htmlFor="threeTransfer" className={classes.checkbox}>
-        <input type="checkbox" id="threeTransfer" onClick={handleClickFilter} />
-        <span className={threeTransfer ? classes['checkbox--active'] : classes['checkbox--craft']} />3 пересадки
-      </label>
+      {transfersCheckbox.map(({ id, label }) => (
+        <label htmlFor={id} className={classes.checkbox} key={uuidv4()}>
+          <input id={id} type="checkbox" onClick={handleClickFilter} />
+          <span className={stateTransfers[id] ? classes['checkbox--active'] : classes['checkbox--craft']} />
+          {label}
+        </label>
+      ))}
     </div>
   )
 }

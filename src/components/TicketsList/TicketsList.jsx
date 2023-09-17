@@ -11,30 +11,22 @@ import classes from './TicketsList.module.scss'
 function TicketsList() {
   const { tickets, ticketСounter, loader } = useSelector((state) => state.getTickets)
   const stateTransfers = useSelector((state) => state.transferFilter)
-  const { all, noTransfers, oneTransfer, twoTransfer, threeTransfer } = stateTransfers
+  const { all, ...transfersFilters } = stateTransfers
 
   const filterTransfer = () => {
     let total = []
-    if (noTransfers) {
-      const noTransfersFilterList = tickets.filter((item) => item.segments[0].stops.length === 0)
-      total = [...total, ...noTransfersFilterList]
-    }
-    if (oneTransfer) {
-      const oneTransferFilterList = tickets.filter((item) => item.segments[0].stops.length === 1)
-      total = [...total, ...oneTransferFilterList]
-    }
-    if (twoTransfer) {
-      const twoTransferFilterList = tickets.filter((item) => item.segments[0].stops.length === 2)
-      total = [...total, ...twoTransferFilterList]
-    }
-    if (threeTransfer) {
-      const threeTransferFilterList = tickets.filter((item) => item.segments[0].stops.length === 3)
-      total = [...total, ...threeTransferFilterList]
-    }
+    Object.entries(transfersFilters).forEach((item, index) => {
+      if (item[1]) {
+        const filterList = tickets.filter((it) => it.segments[0].stops.length === index)
+        total = [...total, ...filterList]
+      }
+    })
     return total
   }
+
   const ticketsFilterList = all ? tickets : filterTransfer()
   const ticketsRenderList = ticketsFilterList.slice(0, ticketСounter)
+
   const numberOfTransfers = (length) =>
     `${length > 0 ? length : 'Без'} ${declOfNum(length, ['пересадка', 'пересадки', 'пересадок'])}`
 
@@ -51,27 +43,28 @@ function TicketsList() {
     return `${hours}ч ${minutes}м`
   }
 
-  const segment = (item) =>
-    item.segments.map((itm, index) => (
+  const segment = (segments) =>
+    segments.map(({ origin, destination, stops, date, duration }, index) => (
       <Fragment key={uuidv4()}>
         <div className={[classes[`stops${index}`], classes['font-grey']].join(' ')}>
-          {numberOfTransfers(itm.stops.length)}
+          {numberOfTransfers(stops.length)}
         </div>
-        <div className={classes[`time${index}`]}>{dateFormate(itm.date, itm.duration)}</div>
-        <div className={classes[`duration${index}`]}>{durationFormat(itm.duration)}</div>
-        <div className={classes[`transfers${index}`]}>{itm.stops.join(', ')}</div>
+        <div className={classes[`time${index}`]}>{dateFormate(date, duration)}</div>
+        <div className={classes[`duration${index}`]}>{durationFormat(duration)}</div>
+        <div className={classes[`transfers${index}`]}>{stops.join(', ')}</div>
         <div className={[classes[`cities${index}`], classes['font-grey']].join(' ')}>
-          {itm.origin} - {itm.destination}
+          {origin} - {destination}
         </div>
       </Fragment>
     ))
-  const ticketForRender = ticketsRenderList.map((item) => (
+
+  const ticketForRender = ticketsRenderList.map(({ price, carrier, segments }) => (
     <div key={uuidv4()} className={classes['ticket-wrapper']}>
-      <div className={classes.price}>{item.price.toLocaleString('ru-RU')} P</div>
+      <div className={classes.price}>{price.toLocaleString('ru-RU')} P</div>
       <div className={[classes.text0, classes['font-grey']].join(' ')}>в пути</div>
       <div className={[classes.text1, classes['font-grey']].join(' ')}>в пути</div>
-      <img className={classes.logo} src={`https://pics.avs.io/99/36/${item.carrier}.png`} alt="Logo" />
-      {segment(item)}
+      <img className={classes.logo} src={`https://pics.avs.io/99/36/${carrier}.png`} alt="Logo" />
+      {segment(segments)}
     </div>
   ))
 
