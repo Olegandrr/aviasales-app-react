@@ -3,8 +3,7 @@ const initialState = {
   loader: true,
   searchId: null,
   tickets: [],
-  error: false,
-  ticketСounter: 5,
+  ticketCounter: 5,
   activeTab: '',
 }
 
@@ -21,16 +20,10 @@ const getTickets = (state = initialState, action) => {
         loader: !action.loader,
         tickets: [...state.tickets, ...action.tickets],
       }
-    case 'ERROR':
-      return {
-        ...state,
-        error: true,
-        loader: false,
-      }
     case 'SHOW_MORE_TICKETS':
       return {
         ...state,
-        ticketСounter: state.ticketСounter + 5,
+        ticketCounter: state.ticketCounter + 5,
       }
     case 'CHEAP_TAB':
       return {

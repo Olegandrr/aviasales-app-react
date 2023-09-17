@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-import showMoreTicketsAction from '../../Action/showMoreTicketsAction'
+import showMoreTicketsAction from '../../action/showMoreTicketsAction'
 
 import classes from './ShowMoreTickets.module.scss'
 

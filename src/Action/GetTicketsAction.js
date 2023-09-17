@@ -16,8 +16,8 @@ function ticketRequest() {
           dispatch(ticketRequest())
         }
       }
-    } catch (error) {
-      dispatch({ type: 'ERROR' })
+    } catch (err) {
+      throw new Error('сервер не отвечает')
     }
   }
 }

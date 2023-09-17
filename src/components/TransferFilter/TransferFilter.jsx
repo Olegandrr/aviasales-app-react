@@ -1,14 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 
-import filtersActions from '../../Action/TransferFilterAction'
+import filtersActions from '../../action/TransferFilterAction'
 
 import classes from './TransferFilter.module.scss'
 
 function TransferFilter() {
   const dispatch = useDispatch()
   const stateTransfers = useSelector((state) => state.transferFilter)
-  const { all } = stateTransfers
 
   const checkboxTrue = () =>
     Object.values(stateTransfers)
@@ -17,12 +16,8 @@ function TransferFilter() {
 
   const handleClickFilter = (e) => {
     const { id } = e.target
-    if (id === 'All') {
-      dispatch(filtersActions('All'))
-    } else if (all) {
-      dispatch(filtersActions(id))
-    } else if (checkboxTrue() === 3 && !stateTransfers[id]) {
-      dispatch(filtersActions('All'))
+    if (checkboxTrue() === 3 && !stateTransfers[id]) {
+      dispatch(filtersActions('all'))
     } else {
       dispatch(filtersActions(id))
     }

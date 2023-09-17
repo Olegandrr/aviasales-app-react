@@ -9,7 +9,7 @@ import declOfNum from '../../service/declOfNum'
 import classes from './TicketsList.module.scss'
 
 function TicketsList() {
-  const { tickets, ticketСounter, loader } = useSelector((state) => state.getTickets)
+  const { tickets, ticketCounter, loader } = useSelector((state) => state.getTickets)
   const stateTransfers = useSelector((state) => state.transferFilter)
   const { all, ...transfersFilters } = stateTransfers
 
@@ -25,7 +25,7 @@ function TicketsList() {
   }
 
   const ticketsFilterList = all ? tickets : filterTransfer()
-  const ticketsRenderList = ticketsFilterList.slice(0, ticketСounter)
+  const ticketsRenderList = ticketsFilterList.slice(0, ticketCounter)
 
   const numberOfTransfers = (length) =>
     `${length > 0 ? length : 'Без'} ${declOfNum(length, ['пересадка', 'пересадки', 'пересадок'])}`

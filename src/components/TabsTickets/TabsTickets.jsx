@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import { useSelector, useDispatch } from 'react-redux'
 
-import tabsTicketsAction from '../../Action/tabsTicketsAction'
+import tabsTicketsAction from '../../action/tabsTicketsAction'
 
 import tabsClasses from './TabsTickets.module.scss'
 
@@ -9,6 +9,7 @@ function TabsTickets() {
   const dispatch = useDispatch()
   const { activeTab } = useSelector((state) => state.getTickets)
   const classActiveButton = [tabsClasses['tabs-button-active'], tabsClasses['tabs-button']].join(' ')
+
   const button = [
     { name: 'cheap', text: 'Самый дешевый' },
     { name: 'fast', text: 'Самый быстрый' },

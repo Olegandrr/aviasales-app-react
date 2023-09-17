@@ -15,15 +15,33 @@ body {
   margin-left: 37%;
 }
 
+.plane {
+  position: absolute;
+  left: 35%;
+  top: 30vh;
+  animation: plane-fly infinite 8s linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes plane-fly {
+  from {
+    transform: translate(-100%, 100%);
+    
+  }
+  to {
+    transform: translate(500%, -500%);
+  }
+}
+
 @media (max-width: 900px) {
+  .wrapper {
+    width: 100%;
+  }
   .section-tickets {
     width: 100%;
     margin: 20px auto;
   }
-  .wrapper {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
+  
 }
 

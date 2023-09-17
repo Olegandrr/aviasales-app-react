@@ -49,14 +49,14 @@ input[type="checkbox"] {
   margin-right: 10px;
   width: 20px;
   height: 20px;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'> <rect x='0.5' y='0.5' width='19' height='19' rx='1.5' stroke='%239ABBCE' /> </svg>");
+  background-image: url("../../assets/image/Checkbox.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .checkbox--active {
-  background-image: url("./image/Checkbox.svg");
+  background-image: url("../../assets/image/Checkbox-active.svg");
   display: inline-block;
   margin-right: 10px;
   width: 20px;
@@ -73,16 +73,9 @@ input[type="checkbox"] {
     height: auto;
     width: auto;
     row-gap: 5px;
-   
     align-items: flex-start;
     justify-content: flex-start;
     padding: 5px;
    
-  }
-
-  h4 {
-   
-    font-size: 10px;
-    
   }
 }

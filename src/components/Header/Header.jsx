@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux'
 
+import logo from '../../assets/image/Logo.svg'
+
 import headerClasses from './Header.module.scss'
-import logo from './image/Logo.svg'
 
 function Header() {
   const { loader } = useSelector((state) => state.getTickets)
